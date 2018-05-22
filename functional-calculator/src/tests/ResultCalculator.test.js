@@ -1,6 +1,6 @@
 import * as ResultCalculator from "../domain/ResultCalculator";
 
-describe("Calculator tests", () => {
+describe("ResultCalculator tests", () => {
 
     describe("Basic simple operation tests", () => {
 
@@ -76,7 +76,7 @@ describe("Calculator tests", () => {
 
     describe("Priority of operation tests", () => {
 
-        it("Multiplication is prioritized over addition", () => {
+        it("Multiplication is prioritized over addition when after", () => {
             // ARRANGE
             const toCalculate = "5 + 6 * 7";
 
@@ -85,6 +85,17 @@ describe("Calculator tests", () => {
 
             // ASSERT
             expect(resultCalculator()).toBe(47);
+        })
+
+        it("Multiplication is prioritized over addition when before", () => {
+            // ARRANGE
+            const toCalculate = "5 * 6 + 7";
+
+            // ACT
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
+
+            // ASSERT
+            expect(resultCalculator()).toBe(37);
         })
 
         it("Addition and substraction are equal", () => {
@@ -109,7 +120,7 @@ describe("Calculator tests", () => {
             expect(resultCalculator()).toBe(4);
         })
 
-        it("Division are more important than substractions", () => {
+        it("Division are more important than substractions when after", () => {
             // ARRANGE
             const toCalculate = "8 - 8 / 2";
 
@@ -118,6 +129,17 @@ describe("Calculator tests", () => {
 
             // ASSERT
             expect(resultCalculator()).toBe(4);
+        })
+
+        it("Division are more important than substractions when before", () => {
+            // ARRANGE
+            const toCalculate = "8 / 8 - 1";
+
+            // ACT
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
+
+            // ASSERT
+            expect(resultCalculator()).toBe(0);
         })
     })
 })
