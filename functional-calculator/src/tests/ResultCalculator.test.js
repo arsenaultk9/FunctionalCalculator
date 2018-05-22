@@ -1,7 +1,6 @@
-import Calculator from "../domain/Calculator";
+import * as ResultCalculator from "../domain/ResultCalculator";
 
 describe("Calculator tests", () => {
-    const calculator = new Calculator();
 
     describe("Basic simple operation tests", () => {
 
@@ -10,10 +9,10 @@ describe("Calculator tests", () => {
             const toCalculate = "5 + 6 + 7";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(18);
+            expect(resultCalculator()).toBe(18);
         })
 
         it("Substraction is evaluated", () => {
@@ -21,10 +20,10 @@ describe("Calculator tests", () => {
             const toCalculate = "18 - 6 - 7";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(5);
+            expect(resultCalculator()).toBe(5);
         })
 
         it("Multiplication is evaluated", () => {
@@ -32,10 +31,10 @@ describe("Calculator tests", () => {
             const toCalculate = "2 * 4 * 6";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(48);
+            expect(resultCalculator()).toBe(48);
         })
 
         it("Division is evaluated", () => {
@@ -43,10 +42,10 @@ describe("Calculator tests", () => {
             const toCalculate = "48 / 4 / 6";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(2);
+            expect(resultCalculator()).toBe(2);
         })
     })
 
@@ -57,10 +56,10 @@ describe("Calculator tests", () => {
             const toCalculate = "5+6+7";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(18);
+            expect(resultCalculator()).toBe(18);
         })
 
         it("Can have multiple spaces", () => {
@@ -68,10 +67,10 @@ describe("Calculator tests", () => {
             const toCalculate = "5   + 6   +  7";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(18);
+            expect(resultCalculator()).toBe(18);
         })
     })
 
@@ -82,10 +81,10 @@ describe("Calculator tests", () => {
             const toCalculate = "5 + 6 * 7";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(47);
+            expect(resultCalculator()).toBe(47);
         })
 
         it("Addition and substraction are equal", () => {
@@ -93,10 +92,10 @@ describe("Calculator tests", () => {
             const toCalculate = "18 + 6 - 7";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(17);
+            expect(resultCalculator()).toBe(17);
         })
 
         it("Multiplication and division are equal", () => {
@@ -104,10 +103,10 @@ describe("Calculator tests", () => {
             const toCalculate = "2 * 4 / 2";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(4);
+            expect(resultCalculator()).toBe(4);
         })
 
         it("Division are more important than substractions", () => {
@@ -115,10 +114,10 @@ describe("Calculator tests", () => {
             const toCalculate = "8 - 8 / 2";
 
             // ACT
-            const result = calculator.evaluate(toCalculate);
+            const resultCalculator = ResultCalculator.getResultCalculation(toCalculate);
 
             // ASSERT
-            expect(result).toBe(4);
+            expect(resultCalculator()).toBe(4);
         })
     })
 })
